@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fdr2601|25</title>
+    <link rel="stylesheet" href="src/output.css">
+</head>
+
+<body>
+
+
+
+    <!-- Container for App -->
+    <div class="min-h-screen bg-slate-100 flex items-center justify-center p-4 font-sans">
+
+        <!-- ================= 1. LOGIN SECTION ================= -->
+        <div id="loginSection" class="w-full max-w-sm bg-white rounded-3xl shadow-xl p-8 border border-slate-100">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold text-slate-800">Welcome Back!</h2>
+                <p class="text-xs text-slate-500 mt-1">Please enter your details to log in</p>
+            </div>
+
+            <div id="login-form" class="space-y-4">
+                <!-- Username / Name Input -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">UserNumber / Number</label>
+                    <input type="text" id="userNumber" placeholder="Enter your number"
+                        class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm transition"
+                        required />
+                </div>
+
+                <!-- Password Input -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Password</label>
+                    <input type="password" id="userPassword" placeholder="••••••••"
+                        class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm transition"
+                        required />
+                </div>
+
+                <!-- Login Button -->
+                <button type="submit" id="loginBtn"
+                    class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-sm shadow-lg shadow-indigo-200 transition duration-200 active:scale-95 mt-2">
+                    Log In
+                </button>
+            </div>
+        </div>
+
+        <!-- ================= 2. PHONE UI / DASHBOARD SECTION ================= -->
+        <!-- JS দিয়ে শুরুতেই হাইড রাখার জন্য 'hidden' ক্লাস দেওয়া আছে -->
+        <div id="dashboardSection" hidden
+            class="w-full max-w-[360px] h-[680px] bg-slate-900 rounded-[40px] p-4 shadow-2xl border-[6px] border-slate-800 relative flex flex-col justify-between overflow-hidden">
+
+            <!-- Phone Top Notch Bar -->
+            <div class="w-full flex justify-between items-center px-4 pt-2 pb-4 text-white text-xs">
+                <span class="font-semibold">9:41</span>
+                <div class="w-16 h-4 bg-slate-800 rounded-full"></div>
+                <div class="flex items-center space-x-1.5">
+                    <div class="w-2.5 h-2.5 bg-white rounded-full"></div>
+                    <div class="w-2 h-2 bg-white rounded-full"></div>
+                </div>
+            </div>
+
+            <!-- Main Screen Content Wrapper -->
+            <div class="flex-1 bg-slate-50 rounded-[28px] p-5 flex flex-col justify-between overflow-y-auto">
+
+                <!-- Top User Greeting -->
+                <div>
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <p class="text-xs text-slate-400 font-medium">Hello,</p>
+                            <h3 id="display-name" class="text-base font-bold text-slate-800">User Name</h3>
+                        </div>
+                        <div
+                            class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-sm">
+                            U
+                        </div>
+                    </div>
+
+                    <!-- Wallet Card (Balance BDT) -->
+                    <div
+                        class="w-full bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-2xl p-5 text-white shadow-xl shadow-indigo-100">
+                        <p class="text-xs opacity-80 mb-1">Total Balance</p>
+                        <div class="flex items-baseline space-x-1">
+                            <span class="text-2xl font-bold">BDT</span>
+                            <span id="accountBalance" class="text-3xl font-extrabold tracking-tight">5,420</span>
+                        </div>
+                        <div
+                            class="mt-4 pt-3 border-t border-indigo-500/40 flex justify-between text-[11px] opacity-75">
+                            <span>Account Status: Active</span>
+                            <span>PayWallet</span>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons (Add Money & Send Money) -->
+                    <div class="grid grid-cols-2 gap-3 mt-6">
+                        <!-- Add Money Button -->
+                        <button id="addMoneyBtn"
+                            class="flex flex-col items-center justify-center p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-indigo-200 transition active:scale-95 group">
+                            <div
+                                class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-2 group-hover:bg-emerald-600 group-hover:text-white transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 4v16m8-8H4" />
+                                </svg>
+                            </div>
+                            <span class="text-xs font-semibold text-slate-700">Add Money</span>
+                        </button>
+
+                        <!-- Send Money Button -->
+                        <button id="sendMoneyBtn"
+                            class="flex flex-col items-center justify-center p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-indigo-200 transition active:scale-95 group">
+                            <div
+                                class="w-10 h-10 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center mb-2 group-hover:bg-indigo-600 group-hover:text-white transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </div>
+                            <span class="text-xs font-semibold text-slate-700">Send Money</span>
+                        </button>
+                    </div>
+                    <!-- ================= ADD MONEY INPUT FORM ================= -->
+                    <div id="addMoneyForm" hidden
+                        class="mt-4 p-4 bg-white rounded-2xl border border-slate-100 shadow-sm space-y-3">
+                        <h4 class="text-xs font-bold text-slate-700">Add Money to Wallet</h4>
+                        <div>
+                            <label class="block text-[11px] font-medium text-slate-500 mb-1">Amount (BDT)</label>
+                            <input type="number" id="addAmount" placeholder="Enter amount"
+                                class="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-medium text-slate-500 mb-1">Pin Number</label>
+                            <input type="password" id="addPin" placeholder="Enter 4-digit pin"
+                                class="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                        </div>
+
+                        <button id="addMoneySubmitBtn"
+                            class="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl text-xs shadow-md transition active:scale-95">
+                            Confirm Add Money
+                        </button>
+                    </div>
+
+
+                    <!-- ================= CASH OUT / SEND MONEY INPUT FORM ================= -->
+                    <div id="sendMoneyForm" hidden
+                        class="mt-4 p-4 bg-white rounded-2xl border border-slate-100 shadow-sm space-y-3">
+                        <h4 class="text-xs font-bold text-slate-700">Send Money / Cash Out</h4>
+
+                        <div>
+                            <label class="block text-[11px] font-medium text-slate-500 mb-1">Receiver Phone
+                                Number</label>
+                            <input type="text" id="send-phone" placeholder="017XXXXXXXX"
+                                class="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-medium text-slate-500 mb-1">Amount (BDT)</label>
+                            <input type="number" id="send-amount" placeholder="Enter amount"
+                                class="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-medium text-slate-500 mb-1">Pin Number</label>
+                            <input type="password" id="send-pin" placeholder="Enter 4-digit pin"
+                                class="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                        </div>
+
+                        <button id="sendMoneySubmitBtn"
+                            class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-xs shadow-md transition active:scale-95">
+                            Confirm Send Money
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Phone Bottom Home Indicator -->
+                <div class="w-28 h-1 bg-slate-300 rounded-full mx-auto mt-4"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
